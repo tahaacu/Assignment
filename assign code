@@ -4,7 +4,6 @@ import java.util.List;
 
 public class CoffeeShop {
     /**
-     *
      */
     private String name;
     public String getName() {
@@ -111,16 +110,19 @@ public class CoffeeShop {
     public static void main(String[] args) {
         // Define menu items
         MenuItem[] menuItems = {
-            new MenuItem("Latte", "drink", 3.99),
-            new MenuItem("Iced coffee", "drink",0.18),
-            new MenuItem("Cinnamon roll", "food", 1.99),
-            new MenuItem("Ham and cheese sandwich", "food", 4.99),
-            new MenuItem("Tuna sandwich", "food", 5.49),
-            new MenuItem("Lemonade", "drink", 0.16),
-            new MenuItem("Orange juice", "drink", 2.49),
-            new MenuItem("Cranberry juice", "drink", 2.99),
-            new MenuItem("Pineapple juice", "drink", 2.99),
+            new MenuItem("tea", "drink", 1.99),
+            new MenuItem("Mocca", "drink", 5.99),
+            new MenuItem("hotcoffee", "drink",2.49),
+            new MenuItem("Cinnamon roll", "food", 3.99),
+            new MenuItem("Ham and cheese sandwich", "food", 6.99),
+            new MenuItem("Burger sandwich", "food", 6.49),
+            new MenuItem("Lemonade", "drink", 1.16),
+            new MenuItem("Orange juice", "drink", 4.49),
+            new MenuItem("Apple juice", "drink", 5.99),
+            new MenuItem("Pineapple juice", "drink", 4.49),
+            new MenuItem("Mango juice", "drink", 7.49)
             new MenuItem("bacon", "food", 2.99)
+            new MenuItem("Jampo", "food", 8.49)
         };
 
         // Create coffee shop
@@ -128,36 +130,36 @@ public class CoffeeShop {
 
         // Test adding orders
         try {
-            System.out.println(tcs.addOrder("hot cocoa")); // "This item is currently unavailable!"
+            System.out.println(tcs.addOrder("iced cocoa")); // "This item is currently unavailable now!"
         } catch (ItemUnavailableException e) {
-            System.out.println("This item is currently unavailable");
+            System.out.println("unavailable now");
         }
 
         try {
-            System.out.println(tcs.addOrder("iced tea")); // "This item is currently unavailable!"
+            System.out.println(tcs.addOrder(" iced tea ")); // "This item is currently unavailable now!"
         } catch (ItemUnavailableException e) {
-            System.out.println("This item is currently unavailable");
+            System.out.println(" unavailable now");
         }
 
         try {
             System.out.println(tcs.addOrder("cinnamon roll")); // "Order added!"
         } catch (ItemUnavailableException e) {
-            System.out.println("This item is currently unavailable");
+            System.out.println(" unavailable now ");
         }
 
         try {
-            System.out.println(tcs.addOrder("iced coffee")); // "Order added!"
+            System.out.println(tcs.addOrder("hotcoffee")); // "Order added!"
         } catch (ItemUnavailableException e) {
-            System.out.println("This item is currently unavailable");
+            System.out.println("unavailable now");
         }
 
         // Test listing orders and calculating due amount
-        System.out.println(Arrays.toString(tcs.listOrders())); // ["cinnamon roll", "iced coffee"]
+        System.out.println(Arrays.toString(tcs.listOrders())); // ["cinnamon roll", "hotcoffee"]
         System.out.println(String.format("%.2f", tcs.dueAmount())); // 2.17
 
         // Test fulfilling orders
-        System.out.println(tcs.fulfillOrder()); // "The cinnamon roll is ready!"
-        System.out.println(tcs.fulfillOrder()); // "The iced coffee is ready!"
+        System.out.println(tcs.fulfillOrder()); // "The cinnamon roll is done!"
+        System.out.println(tcs.fulfillOrder()); // "The hotcoffee is done!"
         System.out.println(tcs.fulfillOrder()); // "All orders have been fulfilled!"
 
         // Test listing orders and calculating due amount after fulfilling all orders
@@ -168,10 +170,10 @@ public class CoffeeShop {
         System.out.println(tcs.cheapestItem()); // "Lemonade"
 
         // Test getting drinks only
-        System.out.println(Arrays.toString(tcs.drinksOnly())); // ["Lemonade", "Orange juice", "Cranberry juice", "Pineapple juice"]
+        System.out.println(Arrays.toString(tcs.drinksOnly())); // ["Lemonade", "Orange juice", "Aplle juice", "Pineapple juice" , "Mango juice"]
 
         // Test getting food only
-        System.out.println(Arrays.toString(tcs.foodOnly())); // ["Cinnamon roll", "Ham and cheese sandwich", "Tuna sandwich"]
+        System.out.println(Arrays.toString(tcs.foodOnly())); // ["Cinnamon roll", "Ham and cheese sandwich", "burger sandwich " , "bacon" , "Jampo"]
     }
 }
 
